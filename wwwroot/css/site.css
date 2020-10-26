@@ -1,0 +1,1073 @@
+
+/*ESTILOS BASE*/
+html {
+    height: 100vh;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Lato", "sans-serif";
+    height: 100%;
+    color: #373737;
+    background-color: #fff;
+}
+
+body.dark {
+    background: #070a17;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    margin: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+}
+
+#app {
+    height: 100%;
+}
+
+.wrapperContent {
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+}
+
+.btn-signIn {
+    background-color: #043264;
+    color: white;
+    padding: 0.5em 4em;
+    border: 0;
+    border-radius: 4px;
+    outline: 0;
+    font-weight: bold;
+    width: 300px;
+    cursor: pointer;
+    justify-self: end;
+    border-bottom: 2px solid #0c4581;
+    order: 1;
+}
+
+.btn-signIn:hover {
+    background-color: #0c4480;
+    transition: 0.5 ease-in-out;
+}
+
+.btn-signOut {
+    background-color: #043264;
+    color: #fff;
+    padding: 0.5em 4em;
+    border: 0;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+    outline: 0;
+    width: 100%;
+    justify-self: end;
+    border-bottom: 2px solid #0c4581;
+    order: 1;
+}
+
+.btn-signOut:hover {
+    background-color: #0c4480;
+    transition: 0.5 ease-in-out;
+}
+/*ESTILOS BASE*/
+
+/*LAYOUT*/
+.LayoutContainer {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    height: 100vh;
+}
+
+.LayoutContainer__content {
+    overflow-y: auto;
+    display: inherit;
+}
+
+.PageView {
+    display: grid;
+    row-gap: 1em;
+    grid-template-rows: auto 1fr;
+    padding: 1.5em;
+}
+
+.PageView h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+/*LAYOUT*/
+
+/*MENU*/
+.Menu {
+    min-width: 250px;
+    background-color: #043264;
+    overflow: hidden;
+    z-index: 2;
+    height: 100vh;
+}
+
+.MenuLogo {
+    display: block;
+    padding: 32px 0 60px 0;
+    font-size: 18px;
+    text-align: center;
+    line-height: 16px;
+}
+
+.MenuLogo__link {
+    color: #161616;
+}
+
+.MenuExtraElements {
+    height: 100%;
+    background-color: #072146;
+    position: relative;
+}
+
+.MenuExtraElements__BoxHidden {
+    width: 340px;
+    height: 100px;
+    background-color: #072146;
+    position: absolute;
+    top: -18px;
+    z-index: -1;
+    transform: rotate(-6deg);
+}
+/*MENU*/
+
+/*MENU NAV*/
+.MenuNav {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    row-gap: 1em;
+    padding: 0 16px;
+    margin-top: 2em;
+}
+
+.MenuNavList__title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #11a3a3;
+}
+
+.MenuNavList__item {
+    list-style: none;
+    margin: 1em 10px;
+    align-items: center;
+}
+
+.MenuNavList__link {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: normal;
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+}
+
+.MenuNavList__link__icon {
+    padding-right: 18px;
+}
+
+.MenuNavListActive {
+    justify-self: flex-end;
+}
+
+.MenuNavListActive,
+.MenuNavListActive .active {
+    color: #072146;
+}
+/*MENU NAV*/
+
+/*MENU USER*/
+.MenuUserButtonLogin {
+    display: block;
+    padding: 0.8em;
+    border: 0;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.MenuUser__photo {
+    border: 1.5px solid #0c4581;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    position: absolute;
+    right: 50%;
+    left: calc(50% - 40px);
+    top: -45px;
+}
+
+.MenuUser__name {
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    padding-top: 50px;
+    color: #fff;
+}
+
+.MenuUserButtonLogin {
+    font-size: 12px;
+    margin: 0.5em auto;
+    width: 60%;
+    background-color: #043264;
+    color: #fff;
+    border-bottom: 2px solid #1b67b9;
+    border-radius: 4px;
+}
+
+.MenuUserButtonLogin:hover {
+    background-color: #0c4581;
+    border-bottom: 2px solid #185fac;
+}
+/*MENU USER*/
+
+/*HOMEPAGE*/
+.HomePageContent__btn {
+    display: block;
+    padding: 0.8em;
+    border: 0;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.HomePage {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    background: url("../assets/BackgroundHome.svg");
+    background-size: cover;
+    background-color: #043264;
+    color: white;
+    padding: 1.5em;
+}
+
+.HomePageContent {
+    order: 2;
+    align-self: center;
+}
+
+.HomePageContent__flag {
+    text-align: center;
+    margin-left: 260px;
+}
+
+.HomePageContent__flag img {
+    width: 50px;
+}
+
+.HomePageContent__title {
+    text-align: center;
+    font-size: 80px;
+    line-height: 32px;
+    color: white;
+}
+
+.HomePageContent__titleSecundary {
+    font-size: 18px;
+    color: white;
+}
+
+.HomePageContent__btn {
+    background-color: #0a9b9b;
+    border-radius: 8px;
+    color: #fff;
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 18px;
+    margin: 1em 0;
+}
+
+.HomePageContent__btn:hover {
+    background-color: #22baba;
+}
+
+.HomePageImage {
+    align-self: flex-end;
+}
+
+.HomePageImage img {
+    width: 100%;
+}
+/*HOMEPAGE*/
+
+/*HOME*/
+.Home {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-row-gap: 1em;
+}
+
+.Home__title {
+    font-size: 24px;
+    color: #0e2649;
+    text-align: right;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+body.dark .Home__title {
+    color: white;
+}
+
+.HomeCardFunctions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+/*HOME*/
+
+/*CARD FUNCTION*/
+.CardFunction {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    row-gap: 0.5em;
+    align-items: center;
+    background-color: #fff;
+    padding: 1em;
+    box-shadow: 5px 5px 6px rgba(204, 204, 204, 0.4);
+    border-radius: 12px;
+}
+
+body.dark .CardFunction {
+    background: #14192b;
+    box-shadow: 5px 5px 6px #000000;
+    color: white;
+}
+
+.CardFunctionHeader__title {
+    font-size: 24px;
+}
+
+.CardFunctionHeader__subtitle {
+    font-size: 14px;
+    color: #b8b8b8;
+    font-weight: 400;
+    font-style: italic;
+    margin-top: 0.5em;
+}
+
+.CardFunctionImage img {
+    margin: 0 auto;
+    display: block;
+}
+
+.CardFunctionFooterPlay {
+    display: block;
+}
+
+.CardFunctionFooterPlay__icon {
+    font-size: 45px;
+    color: #161616;
+}
+
+body.dark .CardFunctionFooterPlay__icon {
+    color: #028484;
+}
+
+.CardFunctionFooterNotification {
+    display: grid;
+    grid-template-columns: 167px auto;
+    grid-column-gap: 12px;
+    align-items: center;
+}
+
+.CardFunctionFooterNotification__txt {
+    text-align: right;
+    font-size: 12px;
+    color: #b8b8b8;
+}
+
+.CardFunctionFooterNotification__count {
+    background-color: #0c4581;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    border-radius: 50%;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: normal;
+}
+/*CARD FUNCTION*/
+
+/*TABLEDATA*/
+.Table {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    row-gap: 1em;
+}
+
+.TableOptions {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 12px;
+}
+
+body.dark .TableOptions {
+    color: white;
+}
+
+.TableDataWrap {
+    overflow-x: auto;
+}
+
+.TableData {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 900px;
+}
+
+.TableDataHead__row {
+    height: 80px;
+    background-color: #043264;
+    color: #fff;
+}
+
+body.dark .TableDataHead__row {
+    background-color: #1b3352;
+}
+
+.TableDataHead__col {
+    color: white;
+    align-items: center;
+    text-align: left;
+    font-size: 12px;
+    padding: 0 8px;
+}
+
+.TableDataBody__row:nth-child(even) {
+    background-color: #e2e2e2;
+}
+
+body.dark .TableDataBody__row:nth-child(even) {
+    background-color: #1b3352;
+}
+
+.TableDataBody__col {
+    font-size: 12px;
+    font-weight: normal;
+    color: #393939;
+    padding: 8px 8px;
+}
+
+body.dark .TableDataBody__col {
+    color: white;
+}
+
+.TableDataBody__col a {
+    color: #373737;
+    text-decoration: underline;
+}
+
+body.dark .TableDataBody__col a {
+    color: white;
+}
+/*TABLEDATA*/
+
+/*SEARCH FORM*/
+.SearchForm {
+    display: flex;
+    align-items: center;
+}
+
+.SearchForm_txt {
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.SearchFormInput {
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    background-color: #f1f1f1;
+    border: none;
+    outline: 0;
+    padding: 0.8em 1em;
+    width: 100%;
+    height: 45px;
+    margin-left: 1em;
+}
+
+body.dark .SearchFormInput {
+    background-color: #2b3149;
+}
+
+.SearchFormInput__icon {
+    color: black;
+}
+
+body.dark .SearchFormInput__icon {
+    color: white;
+}
+
+.SearchFormInput__input {
+    width: 160px;
+    min-width: 160px;
+    margin-left: 1em;
+    border: 0;
+    background: #f1f1f1;
+    outline: 0;
+    width: 100%;
+    height: 40px;
+}
+
+body.dark .SearchFormInput__input {
+    background-color: #2b3149;
+    color: #fff;
+}
+
+.SearchFormInput__btn {
+    border-bottom: 2px solid #da9f0b;
+    font-weight: bold;
+}
+
+.SearchFormInput__btn:hover {
+    background-color: #fec020;
+}
+/*SEARCH FORM*/
+
+/*GRAPHICS CARDS*/
+.GraphicsCards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-column-gap: 8px;
+    grid-row-gap: 8px;
+}
+/*GRAPHICS CARDS*/
+
+/*DOCUMENT*/
+.DocumentFooter__btn {
+    display: block;
+    padding: 0.8em;
+    border: 0;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.DocumentsContain {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    row-gap: 1em;
+    column-gap: 1em;
+}
+
+.DocumentsList {
+    margin-bottom: 4em;
+}
+
+.DocumentsList__title {
+    font-size: 21px;
+    margin-bottom: 1em;
+}
+
+body.dark .DocumentsList__title {
+    color: white;
+}
+
+.Document {
+    box-shadow: 0 0.5rem 1rem -0.5rem #ccc;
+    height: 240px;
+    padding: 1em;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    text-align: center;
+    border-radius: 12px;
+}
+
+body.dark .Document {
+    background: #14192b;
+    box-shadow: 5px 5px 6px #000000;
+    color: white;
+}
+
+.DocumentHeader__title {
+    font-size: 14px;
+}
+
+.DocumentHeader__subtitle {
+    font-size: 12px;
+    color: #939393;
+    margin-top: 0.5em;
+    margin-bottom: 0;
+}
+
+.DocumentBody {
+    align-self: center;
+    justify-self: center;
+}
+
+.DocumentFooter__btn {
+    background-color: #028484;
+    width: 100%;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.DocumentFooter__btn:hover {
+    background-color: #11a3a3;
+}
+/*DOCUMENT*/
+
+/*CARD*/
+.CardFooter__btn {
+    display: block;
+    padding: 0.8em;
+    border: 0;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.Card {
+    box-shadow: 0 0.5rem 1rem -0.5rem #ccc;
+    width: 100%;
+    text-align: center;
+    height: 240px;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+body.dark .Card {
+    background: #14192b;
+    box-shadow: 5px 5px 6px #000000;
+    color: white;
+}
+
+.CardHeader__title {
+    font-size: 14px;
+}
+
+.CardHeader__subtitle {
+    font-size: 12px;
+    font-weight: 400;
+    font-style: italic;
+    margin-top: 0.5em;
+    color: rgba(83, 87, 90, 0.7);
+    margin-bottom: 0;
+}
+
+.CardImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.CardFooter {
+    display: flex;
+    align-items: center;
+}
+
+.CardFooter__btn {
+    background-color: #028484;
+    width: 100%;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.CardFooter__btn:hover {
+    background-color: #11a3a3;
+}
+/*CARD*/
+
+/*PAGE INGESTAS*/
+.UploadFile__btn, .VerifiedIngestaEntryButton__btnClear, .VerifiedIngestaEntryButton__btnSearch {
+    display: block;
+    padding: 0.8em;
+    border: 0;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.VerifiedIngesta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1em;
+}
+
+.VerifiedIngestaEntry {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto 1fr auto;
+    column-gap: 8px;
+    row-gap: 8px;
+}
+
+.VerifiedIngestaEntryButtons {
+    align-items: flex-end;
+    row-gap: 0.5em;
+    margin: 1em 0;
+}
+
+.VerifiedIngestaEntryTextArea textarea {
+    width: 100%;
+    resize: none;
+    border: 0;
+    outline: none;
+    background-color: #f0f0f0;
+    padding: 1em;
+    height: 80%;
+}
+
+body.dark .VerifiedIngestaEntryTextArea textarea {
+    background-color: #2b3149;
+    color: white;
+}
+
+.VerifiedIngestaEntryDivisor {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1em;
+}
+
+.VerifiedIngestaEntryButton__btnSearch {
+    background-color: #028484;
+    color: #fff;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.VerifiedIngestaEntryButton__btnSearch:hover {
+    background-color: #11a3a3;
+}
+
+.VerifiedIngestaEntryButton__btnClear {
+    background-color: #c3414c;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.VerifiedIngestaEntryButton__btnClear:hover {
+    background-color: #d44b57;
+}
+
+.VerifiedIngestaOutput {
+    width: 100%;
+    height: 100%;
+    height: calc(100vh - 100px);
+    overflow: auto;
+    background: #f3f3f3;
+}
+
+body.dark .VerifiedIngestaOutput {
+    background-color: #2b3149;
+    color: white;
+}
+
+.VerifiedIngestaOutput__txtPre {
+    padding: 1em;
+    margin: 0;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+.InputFile {
+    margin: 1em 0;
+}
+
+.wrapperGetValues {
+    display: grid;
+    grid-template-columns: repeat(2, 700px);
+    grid-column-gap: 4em;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+.uploadFile__input {
+    margin-bottom: 1em;
+}
+
+.uploadFile__txtArea {
+    width: 100%;
+    height: 500px;
+    resize: none;
+    border: 0;
+    padding: 1em;
+    background-color: #f2f2f2;
+}
+
+.uploadFile__input {
+    display: none;
+}
+
+.InputFile__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.InputFile__title {
+    margin-bottom: 0.5em;
+    font-size: 14px;
+    display: inline-block;
+}
+
+body.dark .InputFile__title {
+    color: white;
+}
+
+.InputFile__filter {
+    background-color: #5b6eb2;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 12px;
+    padding: 0.5em 1em;
+    cursor: pointer;
+}
+
+.InputFile__filter .icon-file {
+    padding-right: 0.5em;
+}
+
+.InputFile__input {
+    background-color: #f0f0f0;
+    border: 0;
+    outline: 0;
+    color: #484848;
+    padding: 0 1em;
+    line-height: 3;
+    border-radius: 4px;
+    display: block;
+    width: 100%;
+}
+
+body.dark .InputFile__input {
+    background-color: #2b3149;
+    color: white;
+}
+
+.UploadFile__btn {
+    background-color: #043264;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.UploadFile__btn:hover {
+    background-color: #0c4581;
+}
+
+.btnSuccess:hover {
+    background-color: #51aced;
+}
+
+.myButtonEntryTwo:hover {
+    background-color: #0c4581;
+}
+
+.buttonSecundary:hover {
+    background-color: #4ba8eb;
+}
+
+.cleanButton {
+    background-color: #043264;
+    color: #fff;
+    border: 0;
+    border-radius: 4px;
+    line-height: 3;
+    outline: none;
+    padding: 0;
+}
+
+.cleanButton:hover {
+    background-color: #0c4581;
+}
+
+.msg-tooltip {
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #aaaaaa;
+    margin: 1em 0;
+}
+
+.tooltip__info {
+    padding-right: 0.5em;
+}
+
+.verifiedGetValues {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-column-gap: 2em;
+}
+
+.buttonUploadDesactive {
+    width: 100%;
+}
+
+body.dark .buttonDesactive {
+    background-color: #2b3149;
+}
+
+.buttonDesactive {
+    background-color: #f7f7f7;
+    color: #cacaca;
+    display: block;
+    padding: 10px 1.5em;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 0;
+    outline: none;
+    text-align: center;
+    width: 100%;
+    cursor: default;
+}
+
+.filterSuccess {
+    border: 2px solid #67de67;
+    background-color: #e5ffe5;
+}
+
+body.dark .filterSuccess {
+    background-color: #317c31;
+    color: white;
+}
+
+.filterError {
+    border: 2px solid #ff6565;
+    background-color: #ffe0e0;
+}
+
+body.dark .filterError {
+    background-color: #8d3c3c;
+    color: white;
+}
+
+.txtPreformat {
+    background-color: #f2f2f2;
+    height: calc(100vh - 215px);
+    margin: 0;
+    padding: 1em;
+    overflow: auto;
+}
+
+.txtAreaPaste {
+    resize: none;
+    background-color: #f2f2f2;
+    width: 100%;
+    padding: 1em;
+    border: 0;
+    outline: none;
+}
+
+.searchIngesta {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    justify-content: flex-end;
+}
+
+.searchIngesta__input {
+    margin-right: 0.5em;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    line-height: 2;
+    outline: 0;
+    border: 0;
+    padding-left: 1em;
+}
+
+body.dark .searchIngesta__input {
+    background-color: #2b3149;
+    color: white;
+}
+
+.searchIngesta__btn {
+    background-color: #028484;
+    color: white;
+    border: 0;
+    padding: 0.6em 2em;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+}
+
+.searchIngesta__btn:hover {
+    background-color: #11a3a3;
+}
+/*PAGE INGESTAS*/
+
+/*CARDSTATUS*/
+.cardStatus {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #072146;
+    color: #fff;
+    width: 320px;
+    column-gap: 16px;
+    padding: 1em;
+    border-radius: 12px;
+    font-size: 32px;
+}
+
+.cardUserInfo span {
+    text-align: center;
+    display: block;
+    text-transform: uppercase;
+    font-size: .6em;
+}
+
+.cardUserInfo img {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 12px;
+}
+
+.cardUserInfo figure {
+    margin: 0;
+}
+
+.cardDetails p {
+    font-size: .4em;
+}
+/*CARDSTATUS*/

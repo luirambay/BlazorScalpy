@@ -1,0 +1,49 @@
+﻿@page "/fetchdata"
+
+@using Scalpy.Data
+@inject WeatherForecastService ForecastService
+
+    <div class="FetchData PageView">
+        <div class="FetchData__content">
+            <h1 class="MainContent__title">Weather forecast</h1>
+            <p>This component demonstrates fetching data from a service.</p>
+        </div>
+
+        @if (forecasts == null)
+        {
+            <p><em>Loading...</em></p>
+        }
+        else
+        {
+            <table class="TableData">
+                <thead class="TableDataHead">
+                    <tr class="TableDataHead__row">
+                        <th class="TableDataHead__col">Date</th>
+                        <th class="TableDataHead__col">Temp. (C)</th>
+                        <th class="TableDataHead__col">Temp. (F)</th>
+                        <th class="TableDataHead__col">Summary</th>
+                    </tr>
+                </thead>
+                <tbody class="TableDataBody">
+                    @foreach (var forecast in forecasts)
+                    {
+                        <tr class="TableDataBody__row">
+                            <td class="TableDataBody__col">@forecast.Date.ToShortDateString()</td>
+                            <td class="TableDataBody__col">@forecast.TemperatureC</td>
+                            <td class="TableDataBody__col">@forecast.TemperatureF</td>
+                            <td class="TableDataBody__col">@forecast.Summary</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+
+@code {
+    private WeatherForecast[] forecasts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+    }
+}

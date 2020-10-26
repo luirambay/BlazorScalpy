@@ -1,0 +1,147 @@
+﻿@media (max-width: 1400px) {
+    .HomePage {
+        grid-template-columns: 1fr;
+    }
+
+    .HomePageImage {
+        order: 2;
+        text-align: center;
+    }
+
+        .HomePageImage img {
+            width: 80%;
+        }
+}
+
+@media (max-width: 1023px) {
+    .MenuToggle {
+        display: none;
+    }
+
+    .MainWrapper {
+        grid-template-columns: auto 1fr;
+    }
+
+    .Menu {
+        display: initial;
+    }
+
+    .HomePageContent__title {
+        font-size: 80px;
+        line-height: 48px;
+    }
+
+    .HomePageContent__title__titleSecundary {
+        font-size: 40px;
+    }
+
+    .HomePageContent__btn {
+        font-size: 21px;
+    }
+}
+
+@media (max-width: 767px) {
+    .LayoutContainer {
+        grid-template-columns: 1fr;
+    }
+
+    .MainWrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .VerifiedIngesta {
+        grid-template-columns: 1fr;
+    }
+
+    .VerifiedIngestaEntryDivisor {
+        grid-template-columns: 1fr;
+    }
+
+    .MainContent__title {
+        text-align: right;
+    }
+
+    .MenuToggle {
+        display: flex;
+    }
+
+    .Menu {
+        display: none;
+        overflow: hidden;
+    }
+
+    .showMenu {
+        display: block;
+        position: fixed;
+    }
+
+    .PageView h1 {
+        text-align: right;
+    }
+}
+
+@media (max-width: 480px) {
+    .NotFound img {
+        width: 80%;
+    }
+
+    .TableOptions {
+        grid-template-columns: 1fr;
+        row-gap: 12px;
+    }
+
+    .SearchForm {
+        order: 2;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        column-gap: 0.5em;
+    }
+
+    .btn-signIn,
+    .btn-signOut {
+        width: 100%;
+    }
+
+    .Flag {
+        margin-left: 0;
+    }
+
+    .HomePageContent__title {
+        font-size: 40px;
+    }
+
+    .HomePageContent__titleSecundary {
+        font-size: 16px;
+    }
+
+    .HomeCardFunctions {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 320px) {
+    .SearchForm__txt {
+        display: none;
+    }
+
+    .SearchFormInput {
+        margin-left: 0;
+    }
+
+    .searchIngesta {
+        grid-template-columns: 1fr;
+    }
+
+    .searchIngesta__input {
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
+
+    .Flag__country {
+        width: 35px;
+    }
+
+    .HomePageContent__btn {
+        font-size: 12px;
+    }
+}

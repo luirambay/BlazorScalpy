@@ -1,0 +1,24 @@
+﻿<section class="CardFunction">
+    <header class="CardFunctionHeader">
+        <h2 class="CardFunctionHeader__title">@titleCard</h2>
+        <p class="CardFunctionHeader__subtitle">
+            Mensaje acerca de la funcionalidad.
+        </p>
+    </header>
+    <div class="CardFunctionImage">
+        <img src=imageCard width="100" alt="cardAccess" />
+    </div>
+    <div class="CardFunctionFooter">
+        <a class="CardFunctionFooterPlay" href=sourceCard>
+            <i class="fa fa-play-circle CardFunctionFooterPlay__icon"></i>
+        </a>
+    </div>
+</section>
+
+@code {
+
+    [Parameter]
+    public string titleCard { get; set; }
+
+
+}

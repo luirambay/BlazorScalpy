@@ -1,0 +1,99 @@
+﻿@page "/ingestas"
+
+<section class="VerifiedIngestas PageView">
+    <h1 class="MainContent__title">Validar Ingestas</h1>
+
+    <div class="VerifiedIngesta">
+        <div class="VerifiedIngestaEntry">
+            <SearchIngesta />
+            <div class="VerifiedIngestaEntryUploads VerifiedIngestaEntryDivisor">
+                <div class="VerifiedIngestaUploads__colOne">
+                    <UploadFile />
+                </div>
+                <div class="VerifiedIngestaUploads__colTwo">
+                    <UploadFile />
+                </div>
+            </div>
+
+            <div class="VerifiedIngestaEntryInputs VerifiedIngestaEntryDivisor">
+                <InputListValues />
+            </div>
+
+            <div class="VerifiedIngestaEntryTextArea">
+                <ToolTip />
+                <textarea @bind="message" @bind:event="oninput"
+                          name="code"
+                          cols="0">
+                </textarea>
+            </div>
+
+            <div class="VerifiedIngestaEntryButtons VerifiedIngestaEntryDivisor">
+                <div class="VerifiedIngestaEntryButton">
+                    <button class="VerifiedIngestaEntryButton__btnSearch" @onclick="ToggleShowPassword">
+                        Verificar
+                    </button>
+                </div>
+                <div class="VerifiedIngestaEntryButton">
+                    <button class="VerifiedIngestaEntryButton__btnClear">
+                        Limpiar
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="VerifiedIngestaOutput">
+            <pre class="VerifiedIngestaOutput__txtPre" id="replaceQuotes">
+                @replaceQuotes @Title
+                @message
+            </pre>
+        </div>
+
+        @if (true)
+        {
+            <div style="background-color:brown">asdasd</div>
+        }
+
+        <p>@castMode</p>
+        <p>@type</p>
+        <p @ref=MyElementReference>@resultado</p>
+    </div>
+</section>
+
+@code {
+    string strPrintSuccess;
+    string strPrintError;
+    string message;
+    string replaceQuotes;
+    string castMode, type;
+    IDictionary<string, string> resultado;
+    ElementReference MyElementReference;
+
+    private string Title { get; set; } = "Hello, World!";
+
+
+    protected override void OnInitialized()
+    {
+        strPrintSuccess = "<span class='filterSuccess'>dfdfdfdfdf</span>";
+        strPrintError = "<span class='filterSuccess'>$&</span>";
+    }
+
+    private void ToggleShowPassword()
+    {
+        Title = "<span class='filterSuccess'>dfdfdfdfdf</span>";
+        replaceQuotes = message.Replace("\"", "'");
+
+        //dynamic jsonData = new Logic.HoconToJson().convertHoconToJson(replaceQuotes);
+
+        //castMode = jsonData.kirby.input.options.castMode;
+        //type = jsonData.kirby.input.hola;
+
+        //if (type == null)
+        //{
+        //    type = "Don't exist";
+        //}
+
+        castMode = "";
+        type = "";
+        resultado = new Logic.HoconToJson().validationKirby(replaceQuotes);
+    }
+
+}

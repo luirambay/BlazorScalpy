@@ -1,0 +1,55 @@
+﻿@*<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">Scalpy</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>*@
+
+@*<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Home
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="counter">
+                <span class="oi oi-plus" aria-hidden="true"></span> Counter
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="fetchdata">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
+            </NavLink>
+        </li>
+    </ul>
+</div>*@
+
+<section class="Menu">
+    <div class="MenuLogo">
+        <a class="MenuLogo__link" href="/home">
+            <img src="../assets/logo-landscape.svg" width=180 alt="Logo" />
+        </a>
+    </div>
+
+    <div class="MenuExtraElements">
+        <div class="MenuExtraElements__BoxHidden"></div>
+        <div class="MenuExtraElements__components">
+            <MenuUser />
+            <SwitchMode />
+
+            <MenuNav />
+        </div>
+    </div>
+</section>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

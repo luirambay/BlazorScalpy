@@ -1,0 +1,139 @@
+﻿@page "/projects"
+
+@using Entities;
+
+<div class="Projects PageView">
+    <div class="Projects__content">
+        <h1 class="MainContent__title">Projects</h1>
+        <p>Current count: @currentCount</p>
+
+        <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+        <p>Element: @myelement</p>
+        <p>Element: @message</p>
+
+        <input @bind="message" @bind:event="oninput" @onchange="CategoryChanged" />
+    </div>
+
+   
+
+    <table class="TableData">
+        <thead class="TableDataHead">
+            <tr class="TableDataHead__row">
+                <th class="TableDataHead__col">Folio Datahub</th>
+                <th class="TableDataHead__col">Caso de Uso</th>
+                <th class="TableDataHead__col">Estatus de Resolución</th>
+                <th class="TableDataHead__col">Resolucion</th>
+                <th class="TableDataHead__col">Fecha de Resolución</th>
+                <th class="TableDataHead__col">Tipo de Origen</th>
+                <th class="TableDataHead__col">ID de Tabla</th>
+                <th class="TableDataHead__col">UUAA Raw</th>
+                <th class="TableDataHead__col">UUAA Master</th>
+                <th class="TableDataHead__col">URL de Documentación</th>
+                <th class="TableDataHead__col">Proyecto</th>
+                <th class="TableDataHead__col">Pasa a Ingesta</th>
+                <th class="TableDataHead__col">Q-Sprint de Termino</th>
+            </tr>
+        </thead>
+        <tbody class="TableDataBody">
+            @foreach (var row in bui)
+            {
+                <tr class="TableDataBody__row">
+                    <td class="TableDataBody__col">@row.FolioDatahub</td>
+                    <td class="TableDataBody__col">@row.CasoUso</td>
+                    <td class="TableDataBody__col">@row.EstatusResolucion</td>
+                    <td class="TableDataBody__col">@row.Resolucion</td>
+                    <td class="TableDataBody__col">@row.FechaResolucion</td>
+                    <td class="TableDataBody__col">@row.TipoOrigen</td>
+                    <td class="TableDataBody__col">@row.IdTabla</td>
+                    <td class="TableDataBody__col">@row.UUAARaw</td>
+                    <td class="TableDataBody__col">@row.UUAAMaster</td>
+                    <td class="TableDataBody__col">
+                        <a href="@row.URLDocumentacion" rel="noopener noreferrer" target="_blank">
+                            Link
+                        </a>
+                    </td>
+                    <td class="TableDataBody__col">@row.Proyecto</td>
+                    <td class="TableDataBody__col">@row.PasaIngesta</td>
+                    <td class="TableDataBody__col">@row.QSprintTermino</td>                    
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <table class="TableData">
+        <thead class="TableDataHead">
+            <tr class="TableDataHead__row">
+                <th class="TableDataHead__col">Folio Datahub</th>
+                <th class="TableDataHead__col">ID de Tabla</th>
+                <th class="TableDataHead__col">Tipo de Ingesta</th>
+                <th class="TableDataHead__col">Q-Año-SP Inicio de Ingesta</th>
+                <th class="TableDataHead__col">Q-Año Inicio de Ingesta</th>
+                <th class="TableDataHead__col">Scrum</th>
+                <th class="TableDataHead__col">Nombre de la Tabla Raw</th>
+                <th class="TableDataHead__col">Nombre de la Tabla Master</th>
+                <th class="TableDataHead__col">#campos de la Tabla</th>
+                <th class="TableDataHead__col">UUAA Raw</th>
+                <th class="TableDataHead__col">UUAA Master</th>
+                <th class="TableDataHead__col">Ruta Master</th>
+                <th class="TableDataHead__col">URL de Documentación</th>
+            </tr>
+        </thead>
+        <tbody class="TableDataBody">
+            @foreach (var row in ingestBoard)
+            {
+                <tr class="TableDataBody__row">
+                    <td class="TableDataBody__col">@row.FolioDatahub</td>
+                    <td class="TableDataBody__col">@row.IdTabla</td>
+                    <td class="TableDataBody__col">@row.TipoIngesta</td>
+                    <td class="TableDataBody__col">@row.QAñoSprintInicioIngesta</td>
+                    <td class="TableDataBody__col">@row.QAñoInicioIngesta</td>
+                    <td class="TableDataBody__col">@row.Scrum</td>
+                    <td class="TableDataBody__col">@row.NombreTablaRaw</td>
+                    <td class="TableDataBody__col">@row.NombreTablaMaster</td>
+                    <td class="TableDataBody__col">@row.NumeroCamposTabla</td>
+                    <td class="TableDataBody__col">@row.UUAARaw</td>
+                    <td class="TableDataBody__col">@row.UUAAMaster</td>
+                    <td class="TableDataBody__col">@row.RutaMaster</td>
+                    <td class="TableDataBody__col">@row.ReglaUsuarioIngesta</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+}
+
+@code {
+    string myelement;
+
+    string message;
+
+    List<BUIEntity> bui = new List<BUIEntity>();
+    List<IngestBoardEntity> ingestBoard = new List<IngestBoardEntity>();
+    //List<BUIEntity> tempUsers = new List<BUIEntity>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        bui = new GSheets().getDataBUI();
+    }
+
+    private void CategoryChanged()
+    {
+        bui = new GSheets().getDataBUI();
+        ingestBoard = new GSheets().getDataIngestBoard();
+
+        if (message != null && message != "")
+        {
+            bui = bui.Where(x => x.IdTabla == message).ToList();
+            ingestBoard = ingestBoard.Where(y => y.IdTabla == message).ToList();
+        }
+    }
+}

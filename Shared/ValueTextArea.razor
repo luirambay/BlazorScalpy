@@ -1,0 +1,16 @@
+﻿<div class="VerifiedIngestaEntryTextArea">
+    <ToolTip />
+    <textarea @bind="message" @bind:event="oninput"
+              name="code"
+              cols="0"
+              onChange=""
+      ></textarea>
+</div>
+
+@code {    
+
+    //string message;
+
+    [Parameter]
+    public string message { get; set; }
+}

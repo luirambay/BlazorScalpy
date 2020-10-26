@@ -1,0 +1,140 @@
+﻿@page "/bui"
+
+@using Entities;
+
+<div class="Bui PageView">
+    <h1 class="MainContent__title">Bui</h1>
+    <div class="Table Bui">
+        <div class="TableOptions">
+            <SearchForm />
+            <button class="btn-signIn" onClick="handleAuthClick">
+                Acceder para obtener datos
+            </button>
+            @*<button class="btn-signOut" onClick="handleSignoutClick">
+                Desconectarse
+            </button>*@
+        </div>
+        <div class="TableDataWrap">
+            <TableData />
+        </div>
+
+        <tbody class="TableDataBody">
+            @foreach (var row in monitoringPR)
+            {
+                <tr class="TableDataBody__row">
+                    <td class="TableDataBody__col">@row.FechaRegistro</td>
+                    <td class="TableDataBody__col">@row.NombreProyecto</td>
+                    <td class="TableDataBody__col">@row.NombreDeveloper</td>
+                    <td class="TableDataBody__col">@row.IDTabla</td>
+                    <td class="TableDataBody__col">@row.TipoDesarrollo</td>
+                    <!--<td class="TableDataBody__col">@row.RutaBitbucket</td>-->
+                    <td class="TableDataBody__col">@row.TicketJIRA</td>
+                    <td class="TableDataBody__col">@row.NumeroQ</td>
+                    <td class="TableDataBody__col">@row.NumeroPR</td>
+                    <!--<td class="TableDataBody__col">@row.LiderTecnicoDatahub</td>-->
+                    <td class="TableDataBody__col">@row.Estado</td>
+                    <td class="TableDataBody__col">@row.Revisores</td>
+                    <td class="TableDataBody__col">@row.Size</td>
+                    <td class="TableDataBody__col">@row.EstadoJIRA</td>
+                </tr>
+            }
+        </tbody>
+
+        <tbody class="TableDataBody">
+            @foreach (var row in monitoringLuisPR)
+            {
+                <tr class="TableDataBody__row">
+                    <td class="TableDataBody__col">@row.NombreProyecto</td>
+                    <td class="TableDataBody__col">@row.Estado</td>
+                    <td class="TableDataBody__col">@row.EstadoJIRA</td>
+                </tr>
+            }
+        </tbody>
+
+        <tbody class="TableDataBody">
+            @foreach (var row in monitoringEdsonPR)
+            {
+                <tr class="TableDataBody__row">
+                    <td class="TableDataBody__col">@row.NombreProyecto</td>
+                    <td class="TableDataBody__col">@row.Estado</td>
+                    <td class="TableDataBody__col">@row.EstadoJIRA</td>
+                </tr>
+            }
+        </tbody>
+
+        <tbody class="TableDataBody">
+            @foreach (var row in monitoringYisusPR)
+            {
+                <tr class="TableDataBody__row">
+                    <td class="TableDataBody__col">@row.NombreProyecto</td>
+                    <td class="TableDataBody__col">@row.Estado</td>
+                    <td class="TableDataBody__col">@row.EstadoJIRA</td>
+                </tr>
+            }
+        </tbody>
+
+        <div class="cardStatus">
+            <div class="cardUserInfo">
+                <figure>
+                    <img src="https://electronicssoftware.net/wp-content/uploads/user.png" width="90" alt="Perfil">
+                </figure>
+                <span>Name</span>
+            </div>
+            <div class="cardDetails">
+                <p><span>RORC:</span>1</p>
+                <p><span>NDOD:</span>4</p>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+@code {
+    string message = "1";
+
+    List<MonitoringPREntity> monitoringPR = new List<MonitoringPREntity>();
+
+    //List<String[]> monitoringEdsonPR = new List<String[]>();
+    List<MonitoringPREntity> monitoringEdsonPR = new List<MonitoringPREntity>();
+    List<MonitoringPREntity> monitoringLuisPR = new List<MonitoringPREntity>();
+    List<MonitoringPREntity> monitoringCesarPR = new List<MonitoringPREntity>();
+    List<MonitoringPREntity> monitoringYisusPR = new List<MonitoringPREntity>();
+    List<MonitoringPREntity> monitoringJesusPR = new List<MonitoringPREntity>();
+    List<MonitoringPREntity> monitoringEnriquePR = new List<MonitoringPREntity>();
+    List<MonitoringPREntity> monitoringAngelPR = new List<MonitoringPREntity>();
+    List<MonitoringPREntity> monitoringJorgePR = new List<MonitoringPREntity>();
+    List<MonitoringPREntity> monitoringMaritzaPR = new List<MonitoringPREntity>();
+    List<MonitoringPREntity> monitoringRaysPR = new List<MonitoringPREntity>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var allowedStatus = new[] { "Devuelto", "En revisión", "Revisado parcial" };
+
+        monitoringPR = new Logic.InternalMonitoringPR().getDataMonitoringPR().Where(x => allowedStatus.Contains(x.Estado)).ToList();
+
+        ///monitoringEdsonPR = monitoringPR.Where(x => x.Revisores.Contains(@"EVS")).Select(x => new[] { x.NombreProyecto, x.LiderTecnicoDatahub }).ToList();
+        monitoringEdsonPR = monitoringPR.Where(x => x.Revisores.Contains(@"EVS")).ToList();
+        monitoringLuisPR = monitoringPR.Where(x => x.Revisores.Contains(@"LRB")).ToList();
+        monitoringCesarPR = monitoringPR.Where(x => x.Revisores.Contains(@"CCP")).ToList();
+        monitoringYisusPR = monitoringPR.Where(x => x.Revisores.Contains(@"JCG")).ToList();
+        monitoringJesusPR = monitoringPR.Where(x => x.Revisores.Contains(@"JAM")).ToList();
+        monitoringEnriquePR = monitoringPR.Where(x => x.Revisores.Contains(@"EPR")).ToList();
+        monitoringAngelPR = monitoringPR.Where(x => x.Revisores.Contains(@"ASR")).ToList();
+        monitoringJorgePR = monitoringPR.Where(x => x.Revisores.Contains(@"JAA")).ToList();
+        monitoringMaritzaPR = monitoringPR.Where(x => x.Revisores.Contains(@"MGG")).ToList();
+        monitoringRaysPR = monitoringPR.Where(x => x.Revisores.Contains(@"RLT")).ToList();
+    }
+
+    private void CategoryChanged()
+    {
+        monitoringPR = new Logic.InternalMonitoringPR().getDataMonitoringPR();
+
+        if (message != null && message != "")
+        {
+            var allowedStatus = new[] { "Devuelto", "En revisión", "Revisado parcial" };
+
+            monitoringPR = monitoringPR.Where(x => allowedStatus.Contains(x.Estado)).ToList();
+        }
+    }
+}
